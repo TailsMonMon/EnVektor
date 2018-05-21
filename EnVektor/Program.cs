@@ -8,7 +8,7 @@ namespace EnVektor {
     class Program {
         static void Main(string[] args) {
             int[] someNumbers = new int[10];
-            bool validData = true;
+            bool validData = false;
             int theNumber = 7;
 
             for(int i = 0; i < 10; i++) {
@@ -16,24 +16,24 @@ namespace EnVektor {
                     Console.Write("Skriv ett tal: ");
                     try {
                         someNumbers[i] = Convert.ToInt32(Console.ReadLine());
-                        validData = true;   // just to be clear
+                        validData = true;
                     }
                     catch(FormatException) {
                         Console.WriteLine("Var snäll och skriv endast heltal");
-                        validData = false;  // to make it loop after an exception
+                        i--;
                     }
                     catch(Exception ex) {
                         Console.WriteLine(ex.Message);
-                        validData = false;  // to make it loop after an exception
+                        i--;
                     }
-                } while(validData == false);
+                } while(!validData);
             }
             Console.WriteLine("Tack! \n");
 
             for(int i = 0; i < 10; i++) {
                 Console.Write("Index {0} har talet: ", i);
                 if(someNumbers[i] == theNumber) {
-                    Console.WriteLine(someNumbers[i] + " !"); // 
+                    Console.WriteLine(someNumbers[i] + " !"); // The number is being noticed
                 }
                 else {
                     Console.WriteLine(someNumbers[i]);
